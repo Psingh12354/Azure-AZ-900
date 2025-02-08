@@ -291,6 +291,7 @@ module.exports = async function (context, req) {
         body: "Hello, Azure Functions!"
     };
 };
+```
 
 
 
