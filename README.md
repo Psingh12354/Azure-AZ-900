@@ -301,6 +301,33 @@ module.exports = async function (context, req) {
 
 ### Some Addtional Learning
 
+# ⭐ Star Schema  
+
+## 🚀 What is Star Schema?  
+A **Star Schema** is a type of **database schema** used in **data warehousing**. It is designed for **fast query performance** and **simplifies data retrieval** by organizing data into **fact tables** and **dimension tables**. The structure resembles a **star**, where a **central fact table** is connected to multiple **dimension tables**.
+
+---
+
+## 🔹 Key Components of Star Schema  
+
+### 1️⃣ Fact Table  
+- The **central table** in the schema  
+- Stores **quantitative data (measurable metrics)**  
+- Contains **foreign keys** linking to dimension tables  
+- Example: **Sales Data Table** (Revenue, Quantity Sold, Discounts)  
+
+### 2️⃣ Dimension Tables  
+- Descriptive **reference data** for facts  
+- Contains **attributes** used for filtering, grouping, and aggregation  
+- Example: **Customer Table, Product Table, Time Table**  
+
+---
+
+## 🌟 Example of a Star Schema  
+
+![image](https://github.com/user-attachments/assets/490dccc9-6b8d-499c-84e0-f6f9e16c4d13)
+
+
 
 ### 🔍 In this **Star Schema**, the **Fact Table (Sales Data)** is linked to multiple **Dimension Tables**:  
 ✅ **Customer Dimension** – Customer details like name, location  
