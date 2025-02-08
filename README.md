@@ -355,7 +355,7 @@ A **Star Schema** is a type of **database schema** used in **data warehousing**.
 
 ---
 
-## 🔄 Star Schema vs. Snowflake Schema  
+## 🔄 Star Schema vs. Snowflake Schema  [youtube reference](https://www.youtube.com/watch?v=hQvCOBv_-LE)
 
 | Feature         | Star Schema 🌟 | Snowflake Schema ❄️ |
 |----------------|--------------|-----------------|
