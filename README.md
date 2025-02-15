@@ -412,3 +412,66 @@ The **Entry ID Model** in Azure refers to unique identifiers assigned to various
 - **Security & Auditing:** Entry IDs help track user actions and API calls for auditing purposes.
 
 ---
+
+### 🔑 Authentication vs. Authorization
+
+| Feature           | Authentication 🔐 | Authorization 🎟️ |
+|------------------|-----------------|-----------------|
+| **Definition**   | Verifies **who you are**. | Determines **what you can do**. |
+| **Purpose**      | Confirms identity (e.g., login). | Grants or restricts access to resources. |
+| **Example**      | Logging into GitHub with a password or SSH key. | Accessing a private repo or pushing to a branch. |
+| **Handled By**   | Username, password, OAuth, SSH keys. | Permissions, roles, access control policies. |
+
+# 🔐 MFA vs. 2FA
+
+| Feature          | Multi-Factor Authentication (MFA) | Two-Factor Authentication (2FA) |
+|-----------------|----------------------------------|--------------------------------|
+| **Definition**  | Authentication using **two or more** factors. | Authentication using **exactly two** factors. |
+| **Factors Used** | Can include 2FA but may also require additional layers (e.g., biometrics, security keys). | Always consists of two distinct factors (e.g., password + OTP). |
+| **Security Level** | More secure due to multiple layers. | Secure, but limited to two factors. |
+| **Examples**    | **GitHub:** Password + TOTP + Security Key <br> **Banking:** Card + PIN + Fingerprint <br> **Corporate Login:** Smart Card + PIN + Face Recognition | **GitHub:** Password + TOTP (Authenticator App) <br> **Banking:** Card + PIN <br> **Email Login:** Password + SMS Code |
+
+
+
+# 🔐 Role-Based Access Control (RBAC)
+
+## 📌 What is RBAC?
+Role-Based Access Control (RBAC) is a security model that restricts system access based on user roles. Instead of granting permissions directly to users, access rights are assigned to roles, and users are assigned to those roles.
+
+---
+
+# 🔐 Role-Based Access Control (RBAC)
+
+## 📌 What is RBAC?
+Role-Based Access Control (RBAC) is a security model that restricts system access based on user roles. Instead of granting permissions directly to users, access rights are assigned to roles, and users are assigned to those roles.
+
+---
+
+## 🔹 Types of RBAC
+
+| Type                | Description | Example |
+|---------------------|-------------|---------|
+| **Flat RBAC**      | Basic role-based control where users are assigned a single role with specific permissions. | A **viewer** in GitHub can only read repositories but not modify them. |
+| **Hierarchical RBAC** | Roles inherit permissions from other roles in a hierarchy. | A **Manager** inherits permissions from an **Employee** but has additional privileges. |
+| **Constrained RBAC** | Enforces separation of duties (SoD), preventing users from having conflicting roles. | A user cannot be both a **developer** and an **approver** for the same code change. |
+| **Dynamic RBAC**   | Roles and permissions change dynamically based on conditions (e.g., time, location). | A system admin can make changes **only during working hours** or when connected to a company VPN. |
+
+---
+
+## 🛠️ Example of RBAC in GitHub
+
+| Role              | Permissions |
+|------------------|------------|
+| **Owner**       | Full control over the repository, including managing roles. |
+| **Admin**       | Can manage repo settings but cannot delete the organization. |
+| **Maintainer**  | Can approve and merge pull requests but cannot change repo settings. |
+| **Developer**   | Can push code and create pull requests but cannot merge them. |
+| **Viewer**      | Read-only access to repositories. |
+
+---
+
+## 🔍 Benefits of RBAC
+✔️ **Improved Security** – Minimizes unauthorized access.  
+✔️ **Simplified Management** – Easier permission assignment through roles.  
+✔️ **Compliance** – Helps meet regulatory requirements (e.g., HIPAA, GDPR).  
+✔️ **Efficiency** – Reduces admin workload by assigning permissions to roles instead of individuals.  
