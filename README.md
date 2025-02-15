@@ -367,3 +367,48 @@ A **Star Schema** is a type of **database schema** used in **data warehousing**.
 
 ---
 
+# Azure IAM, MD5, and Entry ID Model Notes
+
+## 🔹 Azure Identity and Access Management (IAM)
+Azure IAM, now known as **Microsoft Entra ID** (formerly Azure Active Directory), is a cloud-based identity and access management service. It provides authentication and authorization mechanisms to manage user identities and access to resources securely.
+
+### 🔑 Key Features:
+- **Single Sign-On (SSO):** Users can log in once and access multiple applications seamlessly.
+- **Multi-Factor Authentication (MFA):** Enhances security by requiring multiple forms of authentication.
+- **Conditional Access Policies:** Restricts access based on conditions like user location, device security, and login behavior.
+- **Role-Based Access Control (RBAC):** Assigns permissions based on predefined roles to minimize security risks.
+
+🔗 [Learn More](https://azure.microsoft.com/en-us/products/category/identity)
+
+---
+
+## 🔹 MD5 Usage in Azure Services
+**MD5 (Message Digest Algorithm 5)** is a cryptographic hash function producing a 128-bit hash value. While MD5 is widely used, it is **not recommended** for security-critical applications due to hash collision vulnerabilities.
+
+### ⚡ Where MD5 is Used in Azure:
+#### 1️⃣ **Azure Blob Storage Integrity Checks**
+- Used for verifying data integrity when uploading large files.
+- Each block in a large file upload can be validated using an MD5 checksum.
+- ⚠️ **Note:** Computing MD5 for large files (>100MB) can be resource-intensive and may cause performance issues.
+- 📌 [MD5 for Large Files](https://learn.microsoft.com/en-us/answers/questions/282572/md5-hash-calculation-for-large-files)
+
+#### 2️⃣ **BGP Peering Sessions (Networking)**
+- Used to authenticate peers in **Border Gateway Protocol (BGP)** sessions.
+- Ensures both peers verify each other before establishing a connection.
+- Configurable in Azure Portal under: 
+  **Settings > Connections > IPv4/IPv6 > MD5 Authentication Key**
+- 📌 [BGP MD5 Authentication](https://learn.microsoft.com/en-us/answers/questions/1025769/bgp-md5-auth-on-peering-setup-in-azure-portal)
+
+⚠️ **MD5 is considered weak**—use **SHA-256** or stronger algorithms for security-sensitive applications.
+
+---
+
+## 🔹 Entry ID Model in Azure
+The **Entry ID Model** in Azure refers to unique identifiers assigned to various resources within the platform. These IDs help in tracking, managing, and securing assets efficiently.
+
+### 🛠 Common Usage:
+- **Resource Management:** Unique IDs for VMs, storage accounts, and network configurations.
+- **Logging & Monitoring:** Azure Monitor assigns Entry IDs for log entries.
+- **Security & Auditing:** Entry IDs help track user actions and API calls for auditing purposes.
+
+---
