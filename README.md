@@ -432,12 +432,6 @@ The **Entry ID Model** in Azure refers to unique identifiers assigned to various
 | **Examples**    | **GitHub:** Password + TOTP + Security Key <br> **Banking:** Card + PIN + Fingerprint <br> **Corporate Login:** Smart Card + PIN + Face Recognition | **GitHub:** Password + TOTP (Authenticator App) <br> **Banking:** Card + PIN <br> **Email Login:** Password + SMS Code |
 
 
-
-# 🔐 Role-Based Access Control (RBAC)
-
-## 📌 What is RBAC?
-Role-Based Access Control (RBAC) is a security model that restricts system access based on user roles. Instead of granting permissions directly to users, access rights are assigned to roles, and users are assigned to those roles.
-
 ---
 
 # 🔐 Role-Based Access Control (RBAC)
