@@ -475,3 +475,90 @@ Role-Based Access Control (RBAC) is a security model that restricts system acces
 ✔️ **Simplified Management** – Easier permission assignment through roles.  
 ✔️ **Compliance** – Helps meet regulatory requirements (e.g., HIPAA, GDPR).  
 ✔️ **Efficiency** – Reduces admin workload by assigning permissions to roles instead of individuals.  
+
+
+----
+# Agility, Fault Tolerance & High Availability in Azure
+
+## 📌 Overview
+In **cloud computing**, businesses prioritize **agility, fault tolerance, and high availability** to ensure **efficient operations, minimal downtime, and system resilience**. 
+
+Azure provides multiple services and architectures to support these capabilities.
+
+---
+
+## 🚀 Agility
+**Agility** refers to the ability to **quickly adapt** to changing business needs by scaling, deploying, and modifying infrastructure effortlessly.
+
+### 🔹 Key Features in Azure:
+- **Autoscaling**: Services like **Azure Virtual Machine Scale Sets (VMSS)** dynamically adjust resources.
+- **DevOps & CI/CD**: **Azure DevOps** enables rapid deployment and testing.
+- **Microservices**: **Azure Kubernetes Service (AKS)** facilitates agile application development.
+- **Serverless Computing**: **Azure Functions** enables event-driven applications without managing servers.
+
+### ✅ **Example in Azure**
+A startup launches a new feature and needs to **scale up** rapidly. Azure **App Services** and **Azure SQL Database** allow quick adjustments without provisioning new hardware.
+
+---
+
+## 🛡️ Fault Tolerance
+**Fault tolerance** ensures a system **continues operating** even if certain components fail.
+
+### 🔹 Key Features in Azure:
+- **Redundancy**: Azure services store multiple copies of data to prevent loss.
+- **Geo-replication**: **Azure Storage and Azure SQL Database** offer automatic **replication** across regions.
+- **Load Balancing**: **Azure Load Balancer & Azure Front Door** distribute traffic to prevent failures.
+- **Backup & Disaster Recovery**: **Azure Backup & Azure Site Recovery** ensure data integrity.
+
+### ✅ **Example in Azure**
+A company's web app runs on **multiple VMs**. If one VM fails, **Azure Load Balancer** redirects traffic to healthy instances, ensuring **zero downtime**.
+
+---
+
+## 🔄 High Availability (HA)
+**High availability** means a system is **always accessible** with minimal downtime.
+
+### 🔹 Key Features in Azure:
+- **Availability Zones**: Azure data centers are divided into multiple **fault-isolated zones**.
+- **Active-Passive & Active-Active Architectures**: Services like **Azure Traffic Manager** ensure requests are routed to the nearest available resource.
+- **99.99% Uptime SLAs**: Azure ensures uptime for critical services like **Azure SQL Managed Instance** and **Azure Virtual Machines**.
+- **Health Monitoring**: **Azure Monitor & Azure Application Insights** track system health.
+
+### ✅ **Example in Azure**
+A bank runs an **online banking app** using **Azure SQL Database with Geo-Replication**. Even if the primary region fails, traffic is **seamlessly redirected** to the **secondary region**.
+
+-----
+
+# CapEx vs OpEx in Azure
+
+## 📌 Overview
+When considering cloud computing costs in **Microsoft Azure**, expenses fall into two primary categories:
+
+- **CapEx (Capital Expenditure)** - Upfront investment in physical infrastructure.
+- **OpEx (Operational Expenditure)** - Pay-as-you-go expenses for cloud services.
+
+---
+
+## 🆚 CapEx vs OpEx
+
+| Aspect        | **CapEx (Capital Expenditure)** | **OpEx (Operational Expenditure)** |
+|--------------|--------------------------------|------------------------------------|
+| **Definition** | One-time upfront cost for acquiring IT infrastructure. | Ongoing expenses based on cloud service usage. |
+| **Payment Model** | Large initial investment. | Pay-as-you-go or subscription-based model. |
+| **Scalability** | Limited by initial investment; requires new purchases for upgrades. | Highly scalable; resources can be increased or decreased as needed. |
+| **Example in Azure** | Purchasing on-premises servers, storage devices, or networking equipment. | Using Azure Virtual Machines (VMs), Azure SQL Database, or Azure Blob Storage. |
+| **Maintenance** | Requires dedicated IT team for upkeep, repairs, and upgrades. | Managed by Azure, reducing operational overhead. |
+| **Flexibility** | Less flexible; hardware must be fully utilized to justify cost. | More flexible; pay only for what is used. |
+| **Risk** | Higher risk if demand fluctuates, as unused resources remain costly. | Lower risk due to cost optimization and dynamic scaling. |
+
+---
+
+## 💡 Azure and the Shift to OpEx
+
+Most organizations prefer **OpEx** in Azure due to its **cost-efficiency, flexibility, and scalability**. Azure offers services like:
+
+- **Azure Virtual Machines (VMs)** – Pay for compute power as needed.
+- **Azure SQL Database** – No need to invest in physical database servers.
+- **Azure Kubernetes Service (AKS)** – Scale containerized applications dynamically.
+
+With **Azure Reserved Instances**, companies can mix **OpEx** and **CapEx** by committing to long-term cloud usage for discounts.
