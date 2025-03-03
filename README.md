@@ -556,3 +556,184 @@ Most organizations prefer **OpEx** in Azure due to its **cost-efficiency, flexib
 - **Azure Kubernetes Service (AKS)** – Scale containerized applications dynamically.
 
 With **Azure Reserved Instances**, companies can mix **OpEx** and **CapEx** by committing to long-term cloud usage for discounts.
+
+
+-----
+
+# 🛡️ Network Security Groups (NSGs)
+
+## 📌 Introduction  
+A **Network Security Group (NSG)** is a security feature in cloud platforms (such as **Microsoft Azure**) that **controls inbound and outbound traffic** to network resources. NSGs use rules to filter traffic at both the **subnet** and **network interface** levels.
+
+---
+
+## 🔹 Features of NSGs  
+- ✅ **Traffic Control** – Restricts incoming & outgoing traffic based on security rules.  
+- ✅ **Stateful Rules** – If an inbound rule allows traffic, the response is automatically allowed.  
+- ✅ **Rule Priority** – Rules are evaluated based on priority (lower number = higher priority).  
+- ✅ **Association** – Can be applied to **subnets** or **network interfaces (NICs)**.  
+- ✅ **Logging & Monitoring** – Can be integrated with Azure Monitor and NSG Flow Logs.  
+
+---
+
+## 📜 NSG Rule Components  
+Each rule in an **NSG** consists of:  
+
+| Component        | Description |
+|-----------------|-------------|
+| **Name**        | A unique identifier for the rule |
+| **Priority**    | Determines rule evaluation order (lower = higher priority) |
+| **Source**      | Defines where traffic originates from (IP, CIDR, Service Tag) |
+| **Destination** | Defines where traffic is going (IP, CIDR, Service Tag) |
+| **Port**        | Specifies the port or range of ports (e.g., 22, 80, 443) |
+| **Protocol**    | Specifies **TCP, UDP, ICMP, or Any** |
+| **Direction**   | Defines if the rule applies to **Inbound** or **Outbound** traffic |
+| **Action**      | Specifies whether traffic is **Allowed** or **Denied** |
+
+---
+
+## 🔄 NSG Association  
+NSGs can be **associated** with:  
+1️⃣ **Subnets** – Affects all virtual machines (VMs) within the subnet.  
+2️⃣ **Network Interfaces (NICs)** – Affects only specific VMs or services.  
+
+**💡 Note:** If an NSG is applied at both **subnet** and **NIC** levels, **both rulesets** are enforced.
+
+---
+
+## ⚡ Default NSG Rules  
+Azure automatically creates **default security rules** that **cannot** be deleted.  
+
+| Rule Name                  | Priority | Source           | Destination | Port  | Action |
+|----------------------------|----------|-----------------|-------------|--------|--------|
+| AllowVnetInBound          | 65000    | Virtual Network | Virtual Network | Any | Allow  |
+| AllowAzureLoadBalancerInBound | 65001 | Azure Load Balancer | Any | Any | Allow  |
+| DenyAllInBound            | 65500    | Any             | Any         | Any    | Deny   |
+| AllowVnetOutBound         | 65000    | Virtual Network | Virtual Network | Any | Allow  |
+| AllowInternetOutBound     | 65001    | Any             | Internet    | Any    | Allow  |
+| DenyAllOutBound           | 65500    | Any             | Any         | Any    | Deny   |
+
+---
+
+## 🛠️ Example NSG Rule (Allow SSH)
+
+To allow **SSH traffic (port 22)** from any source, use the following **Azure CLI** command:
+
+```sh
+az network nsg rule create --resource-group MyResourceGroup \
+  --nsg-name MyNSG --name AllowSSH --priority 100 \
+  --source-address-prefixes '*' --destination-port-ranges 22 \
+  --direction Inbound --access Allow --protocol TCP --description "Allow SSH access"
+```
+
+# ☁️ Public vs Private vs Hybrid Cloud in Azure
+
+## 📌 Introduction  
+Cloud computing offers three primary deployment models:  
+- **Public Cloud** – Resources are hosted by a third-party provider and shared among multiple users.  
+- **Private Cloud** – Resources are dedicated to a single organization for enhanced control and security.  
+- **Hybrid Cloud** – A combination of public and private cloud, allowing flexibility and scalability.
+
+Understanding these models is essential for the **Microsoft Azure Fundamentals (AZ-900)** exam.
+
+---
+
+## 🌍 Public Cloud  
+### 🔹 Definition  
+The **Public Cloud** is a cloud computing model where services and infrastructure are hosted and managed by a cloud provider. The resources are shared among multiple tenants over the **internet**.
+
+### 🔹 Characteristics  
+- 🌐 **Multi-Tenant Environment** – Multiple users share the same infrastructure.  
+- 💰 **Pay-as-You-Go Pricing** – Cost-efficient, as you pay only for what you use.  
+- 🚀 **Highly Scalable** – Resources can be quickly scaled up or down.  
+- 🛠️ **Managed by Cloud Provider** – No hardware maintenance required.  
+
+### 🔹 Advantages  
+✅ **Lower Costs** – No upfront infrastructure costs.  
+✅ **High Availability & Reliability** – Backed by large-scale data centers.  
+✅ **Flexible & Scalable** – Ideal for businesses with fluctuating workloads.  
+
+### 🔹 Disadvantages  
+❌ **Less Control** – Limited access to backend configurations.  
+❌ **Security Concerns** – Data is stored in a shared environment.  
+❌ **Compliance Issues** – Some industries require private hosting for regulatory reasons.  
+
+### 🔹 Examples in Azure  
+- **Azure Virtual Machines (VMs)**
+- **Azure App Services**
+- **Azure Storage**
+- **Microsoft 365 & OneDrive**
+
+---
+
+## 🏢 Private Cloud  
+### 🔹 Definition  
+A **Private Cloud** is a dedicated cloud environment exclusively for one organization, providing full control and customization.
+
+### 🔹 Characteristics  
+- 🔒 **Single-Tenant Environment** – Infrastructure is not shared with other organizations.  
+- 🎯 **Greater Control** – Full access to configurations and customizations.  
+- 🛡️ **Enhanced Security & Compliance** – Suitable for industries with strict regulations (e.g., finance, healthcare).  
+
+### 🔹 Advantages  
+✅ **Better Security & Compliance** – Data stays within the organization.  
+✅ **Full Customization** – Adjust resources based on specific needs.  
+✅ **Dedicated Performance** – No shared resources lead to better performance.  
+
+### 🔹 Disadvantages  
+❌ **Higher Costs** – Requires significant investment in infrastructure.  
+❌ **Limited Scalability** – Not as easily scalable as public cloud.  
+❌ **Complex Management** – Requires dedicated IT teams to manage resources.  
+
+### 🔹 Examples in Azure  
+- **Azure Stack Hub** – Extends Azure services to on-premises environments.  
+- **Azure Dedicated Host** – Provides single-tenant, dedicated physical servers.  
+
+---
+
+## 🔄 Hybrid Cloud  
+### 🔹 Definition  
+A **Hybrid Cloud** combines both **public** and **private cloud** environments, allowing seamless interaction between the two.
+
+### 🔹 Characteristics  
+- 🔗 **Interoperability** – Connects on-premises resources with cloud services.  
+- 📈 **Flexible Scalability** – Move workloads between private and public cloud as needed.  
+- 🏛️ **Compliance & Security** – Store sensitive data in a private cloud while using public cloud for other tasks.  
+
+### 🔹 Advantages  
+✅ **Best of Both Worlds** – Balances flexibility, security, and cost.  
+✅ **Optimized Cost Management** – Utilize public cloud when needed to save costs.  
+✅ **Disaster Recovery & Backup** – Use public cloud as a backup for private resources.  
+
+### 🔹 Disadvantages  
+❌ **Complex Integration** – Requires a strong network and security setup.  
+❌ **Higher Maintenance** – Managing multiple cloud environments can be challenging.  
+❌ **Potential Latency Issues** – Data transfer between private and public clouds may introduce latency.  
+
+### 🔹 Examples in Azure  
+- **Azure Arc** – Enables hybrid cloud management across different environments.  
+- **Azure ExpressRoute** – Provides private connections between on-premises and Azure.  
+- **Azure Hybrid Benefit** – Allows cost savings when using existing Windows Server & SQL Server licenses.  
+
+---
+
+## 🏆 Comparison Table  
+
+| Feature         | Public Cloud | Private Cloud | Hybrid Cloud |
+|----------------|-------------|--------------|--------------|
+| **Ownership**  | Cloud provider | Organization | Shared |
+| **Cost**       | Low, pay-as-you-go | High, upfront investment | Medium |
+| **Scalability** | High | Limited | High |
+| **Security**   | Moderate | High | High |
+| **Customization** | Low | High | Medium |
+| **Management** | Fully managed | Organization-managed | Requires hybrid management |
+| **Best for**   | Startups, businesses needing flexibility | Enterprises with strict security needs | Companies needing balance between security & flexibility |
+
+---
+
+## 🎯 Which Cloud Model Should You Choose?  
+🔹 Use **Public Cloud** if you need **cost-effective**, **scalable**, and **low-maintenance** solutions.  
+🔹 Use **Private Cloud** if you require **full control**, **customization**, and **high security**.  
+🔹 Use **Hybrid Cloud** if you want a mix of **security**, **flexibility**, and **cost-efficiency**.  
+
+---
