@@ -452,6 +452,46 @@ Role-Based Access Control (RBAC) is a security model that restricts system acces
 
 ---
 
+### 🔥 **1. Built-in Roles (Predefined)**
+
+Azure provides **predefined roles** to manage access to resources efficiently.  
+Each role grants specific permissions and can be assigned at different **scopes** (Subscription, Resource Group, or Resource Level).
+
+| Role Name                  | Description | Example Use Case |
+|----------------------------|-------------|------------------|
+| **Owner** 🏆 | Full access to manage resources and **assign roles**. | The IT Admin needs complete control over all Azure resources. |
+| **Contributor** ✍️ | Can create, modify, and delete resources but **cannot assign roles**. | A DevOps Engineer needs to deploy and configure VMs but **shouldn't manage permissions**. |
+| **Reader** 👀 | Can **view** resources but **cannot make changes**. | A Security Analyst needs read-only access to monitor cloud activity. |
+| **User Access Administrator** 🔑 | Can **manage RBAC permissions** but **not resources**. | An HR Manager should be able to assign employees to roles without modifying resources. |
+
+---
+
+### 🛠 **Example Scenarios**
+1️⃣ **Assigning an Owner Role**:  
+- The **Cloud Admin** needs **full control** over an entire **subscription**.  
+- Assign them the **Owner** role at the **Subscription Scope**.  
+
+2️⃣ **Assigning a Contributor Role**:  
+- A **Developer** needs to **deploy applications** but **should not modify RBAC settings**.  
+- Assign them the **Contributor** role at the **Resource Group level**.  
+
+3️⃣ **Assigning a Reader Role**:  
+- The **Audit Team** needs to **monitor logs** without making changes.  
+- Assign them the **Reader** role at the **Subscription Scope**.  
+
+4️⃣ **Assigning a User Access Administrator Role**:  
+- The **HR Team** wants to manage **who can access resources**, but not change configurations.  
+- Assign them the **User Access Administrator** role at the **Subscription Scope**.  
+
+---
+
+### 📌 **Exam Tip for AZ-900**
+> **"Owner" can assign roles, but "Contributor" cannot.**  
+> **Use "Reader" for audit teams needing view-only access.**  
+> **RBAC permissions are inherited at lower scopes unless overridden.**  
+
+---
+
 ## 🛠️ Example of RBAC in GitHub
 
 | Role              | Permissions |
@@ -735,5 +775,314 @@ A **Hybrid Cloud** combines both **public** and **private cloud** environments, 
 🔹 Use **Public Cloud** if you need **cost-effective**, **scalable**, and **low-maintenance** solutions.  
 🔹 Use **Private Cloud** if you require **full control**, **customization**, and **high security**.  
 🔹 Use **Hybrid Cloud** if you want a mix of **security**, **flexibility**, and **cost-efficiency**.  
+
+---
+
+# Service Level Agreements (SLA) in Microsoft Azure - AZ-900
+
+## 📌 What is an SLA?
+A **Service Level Agreement (SLA)** is a formal agreement between **Microsoft and Azure customers** that defines:
+- **Uptime & Performance Guarantees** (e.g., 99.9%, 99.95%, 99.99%)
+- **Compensation (Service Credits)** in case of downtime
+- **Scope of Service Commitment**
+
+---
+
+## 🎯 **Key SLA Components**
+### 1️⃣ **Uptime & Availability**
+Microsoft guarantees **availability** for services based on their SLA tier.  
+Typical uptime commitments:
+| SLA (%) | Downtime per month |
+|---------|-------------------|
+| 99%     | ~7.3 hours |
+| 99.9%   | ~43.8 minutes |
+| 99.95%  | ~21.9 minutes |
+| 99.99%  | ~4.3 minutes |
+| 99.999% | ~26 seconds |
+
+### 2️⃣ **Service Credit Compensation**
+If Microsoft fails to meet the SLA, customers may receive service credits based on the **downtime**:
+| Uptime Achieved | Service Credit (%) |
+|----------------|------------------|
+| < 99.9%       | 10%               |
+| < 99%         | 25%               |
+| < 95%         | 100%              |
+
+---
+
+## 📌 **SLA for Azure Services**
+Different Azure services have different SLA commitments:
+
+### 🔹 **Compute**
+| Service | SLA (%) |
+|---------|--------|
+| Virtual Machines (with multiple instances) | 99.95% |
+| Virtual Machines (with a single instance) | 99.9% |
+| Azure Kubernetes Service (AKS) | 99.95% |
+
+### 🔹 **Storage & Databases**
+| Service | SLA (%) |
+|---------|--------|
+| Azure Blob Storage (RA-GRS) | 99.99% |
+| Azure SQL Database (Business Critical) | 99.995% |
+| Cosmos DB | 99.999% |
+
+### 🔹 **Networking**
+| Service | SLA (%) |
+|---------|--------|
+| Azure Load Balancer (Standard) | 99.99% |
+| Azure DNS | 100% |
+| Azure Virtual WAN | 99.95% |
+
+---
+
+## 🏆 **SLA Best Practices**
+✅ Deploy **redundant resources** across **multiple regions**.  
+✅ Use **Availability Zones** for high uptime.  
+✅ Monitor **Azure Service Health** for real-time updates.  
+✅ Implement **automatic failover & backup** strategies.  
+
+---
+
+# 🔐 Azure Active Directory (Azure AD) Release Programs
+
+Azure Active Directory (Azure AD) follows a structured release cycle before features become widely available.  
+These release stages include **Private Preview, Public Preview, and General Availability (GA)**.
+
+---
+
+## 📌 **Azure AD Release Stages**
+### 1️⃣ **Private Preview (Early Access)**
+🔹 Features are available to a **limited set of customers**.  
+🔹 Requires **Microsoft invitation** to participate.  
+🔹 Not supported for production workloads.  
+🔹 Microsoft collects feedback to refine features.  
+
+✅ **Who can access?** Selected customers under NDA.  
+⚠️ **Risk Level**: High (features may change or be removed).  
+
+---
+
+### 2️⃣ **Public Preview (Beta Testing)**
+🔹 Features are **open to all Azure customers** for testing.  
+🔹 Users can enable preview features via the **Azure Portal**.  
+🔹 Can be used in production **with caution** (not covered by SLA).  
+🔹 Provides **early access** to upcoming capabilities.  
+
+✅ **Who can access?** All Azure customers.  
+⚠️ **Risk Level**: Medium (may not be stable for all scenarios).  
+
+**🔗 Enabling Public Preview Features:**  
+1. Sign in to [Azure Portal](https://portal.azure.com).  
+2. Navigate to **Azure AD** > **Preview Features**.  
+3. Select and enable the desired preview.  
+
+---
+
+### 3️⃣ **General Availability (GA)**
+🔹 Fully tested, stable, and **officially released**.  
+🔹 Available to **all customers** with **SLA-backed support**.  
+🔹 Recommended for **production use**.  
+🔹 Includes **official documentation & Microsoft support**.  
+
+✅ **Who can access?** All customers & organizations.  
+⚠️ **Risk Level**: Low (feature is stable and supported).  
+
+---
+
+## 🔍 **Comparison of Release Stages**
+| Stage            | Availability       | Stability | SLA Coverage | Suitable for Production? |
+|-----------------|-------------------|----------|--------------|--------------------------|
+| **Private Preview** | Selected users (NDA) | Low | ❌ No | ❌ No |
+| **Public Preview** | All customers | Medium | ❌ No | ⚠️ Cautiously |
+| **General Availability (GA)** | All customers | High | ✅ Yes | ✅ Yes |
+
+---
+
+# 🏷️ Azure Storage Access Tiers
+
+Azure Storage offers different **Access Tiers** to optimize **cost** and **performance** based on data access patterns.  
+The available tiers are:  
+- **Hot** 🔥 (Frequent Access)  
+- **Cool** ❄️ (Infrequent Access)  
+- **Archive** 📦 (Rare Access)  
+
+---
+
+## 📌 **Azure Storage Access Tiers Overview**
+| Tier     | Use Case                     | Storage Cost 💰 | Access Cost 🔄 | Retrieval Time ⏳ |
+|----------|------------------------------|---------------|--------------|----------------|
+| **Hot** 🔥  | Frequently accessed data     | High          | Low          | Instant        |
+| **Cool** ❄️ | Infrequently accessed data   | Medium        | Medium       | Instant        |
+| **Archive** 📦 | Rarely accessed data       | Low           | High         | Hours (up to 15h) |
+
+---
+
+## 🔥 **Hot Tier**
+- Designed for **frequent access**.  
+- Best for **active data**, **real-time analytics**, and **transactional workloads**.  
+- **Lower access costs**, but **higher storage costs**.  
+
+✅ **Use Cases:**  
+✔ Web applications  
+✔ Databases  
+✔ Frequently accessed logs  
+
+---
+
+## ❄️ **Cool Tier**
+- Optimized for **infrequent access** (data not needed daily).  
+- **Lower storage cost** than Hot, but **higher access cost**.  
+- Data remains **immediately available**.  
+
+✅ **Use Cases:**  
+✔ Backup & disaster recovery  
+✔ Media storage  
+✔ Long-term logs  
+
+---
+
+## 📦 **Archive Tier**
+- For **rarely accessed** data (e.g., compliance, legal records).  
+- **Lowest storage cost**, but **highest access & retrieval cost**.  
+- **Data retrieval takes hours** (up to **15 hours**).  
+
+✅ **Use Cases:**  
+✔ Long-term archival  
+✔ Compliance & regulatory storage  
+✔ Cold storage for backups  
+
+---
+
+## 🛠️ **Changing Access Tiers**
+- You can manually **change tiers** using:  
+  - **Azure Portal**  
+  - **Azure CLI**  
+  - **Azure PowerShell**  
+  - **Azure Storage SDK**  
+- Lifecycle policies can **automatically move** data between tiers based on usage.  
+
+---
+
+## 🚀 **Azure Blob Storage Lifecycle Management**
+- Automate tier transitions based on **rules** (e.g., move to Cool after 30 days).  
+- Reduce storage costs **without manual intervention**.  
+
+Example policy (JSON format):
+
+```json
+{
+  "rules": [
+    {
+      "name": "MoveToCoolTier",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 }
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+## 🔍 Comparison of Azure Storage Tiers
+
+| Feature             | Hot 🔥          | Cool ❄️         | Archive 📦       |
+|---------------------|----------------|----------------|----------------|
+| **Best for**       | Frequent access | Infrequent access | Rare access |
+| **Storage Cost**   | High 💰         | Medium 💰       | Low 💰       |
+| **Access Cost**    | Low 💵          | Medium 💵       | High 💵      |
+| **Data Availability** | Instant ⚡    | Instant ⚡      | Hours (up to 15h) ⏳ |
+| **Minimum Retention** | No minimum  | 30 days        | 180 days     |
+
+----
+
+# 🔄 Azure Storage Data Redundancy
+
+Azure provides multiple **data redundancy options** to ensure **high availability**, **durability**, and **disaster recovery**.  
+These options define **how and where** data is replicated across different locations.
+
+---
+
+## 📌 **Types of Azure Storage Redundancy**
+Azure offers **four** redundancy options:
+
+| Redundancy Type       | Copies of Data | Region Scope | Protection Against |
+|----------------------|--------------|--------------|-------------------|
+| **LRS** (Locally Redundant Storage) | 3 | Single Data Center | Hardware failures |
+| **ZRS** (Zone-Redundant Storage) | 3 | Availability Zones | Data Center failures |
+| **GRS** (Geo-Redundant Storage) | 6 | Secondary Region | Regional failures |
+| **GZRS** (Geo-Zone-Redundant Storage) | 6 | Availability Zones + Secondary Region | Zone & Regional failures |
+
+---
+
+## 🔹 **1. Locally Redundant Storage (LRS)**
+✅ **Stores 3 copies** of data **within a single data center**.  
+✅ Protects against **hardware failures** (e.g., disk crashes).  
+❌ **No protection** against data center failures.  
+❌ **Cheapest option**, but limited durability.  
+
+**Use Case:** Cost-effective storage for **non-critical workloads**.  
+
+---
+
+## 🔹 **2. Zone-Redundant Storage (ZRS)**
+✅ **Stores 3 copies** across **different Availability Zones** within the same region.  
+✅ Protects against **data center failures**.  
+✅ Ensures **higher availability** than LRS.  
+❌ **No cross-region backup**.  
+
+**Use Case:** Critical apps needing **high availability** within a single region.  
+
+---
+
+## 🔹 **3. Geo-Redundant Storage (GRS)**
+✅ **Stores 6 copies** (3 in the primary region + 3 in a secondary region).  
+✅ **Secondary region** is hundreds of miles away.  
+✅ Provides **disaster recovery** in case of a **regional outage**.  
+❌ Secondary copies **read-only** until failover.  
+
+**Use Case:** Business continuity and **disaster recovery**.  
+
+---
+
+## 🔹 **4. Geo-Zone-Redundant Storage (GZRS)**
+✅ **Combines ZRS & GRS**: Stores **3 copies across Availability Zones** + **3 more in a secondary region**.  
+✅ **Highest durability** with **zone + regional protection**.  
+✅ Secondary region available for **failover**.  
+
+**Use Case:** Mission-critical apps requiring **maximum availability & disaster recovery**.  
+
+---
+
+## 🔍 **Comparison of Azure Storage Redundancy Options**
+| Feature         | **LRS** 🔹 | **ZRS** 🏢 | **GRS** 🌍 | **GZRS** 🌎 |
+|---------------|-----------|-----------|-----------|-----------|
+| **Replication** | 3 copies in 1 data center | 3 copies across 3 zones | 6 copies (3 local + 3 in another region) | 6 copies (ZRS + GRS) |
+| **Availability Zone Protection** | ❌ No | ✅ Yes | ❌ No | ✅ Yes |
+| **Region Failover Protection** | ❌ No | ❌ No | ✅ Yes | ✅ Yes |
+| **Read Access to Secondary Region** | ❌ No | ❌ No | ❌ No (except RA-GRS) | ❌ No (except RA-GZRS) |
+| **Use Case** | Low-cost, non-critical | High availability, zone failure | Disaster recovery | Maximum resilience |
+
+---
+
+## 🔄 **Read-Access Geo-Redundant Storage (RA-GRS & RA-GZRS)**
+RA-GRS & RA-GZRS allow **read-only access** to the secondary region **before failover**.  
+🔹 Useful for **global applications** needing **read access** from multiple regions.  
+🔹 Enables **faster disaster recovery**.  
+
+---
+
+## 🚀 **Choosing the Right Redundancy**
+| **If you need...** | **Choose** |
+|-------------------|------------|
+| Cheapest storage with basic protection | **LRS** |
+| High availability within a region | **ZRS** |
+| Disaster recovery with geo-redundancy | **GRS** |
+| Maximum protection with zone + geo redundancy | **GZRS** |
 
 ---
